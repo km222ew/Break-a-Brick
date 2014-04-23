@@ -1,0 +1,6 @@
+Content\ControllerDetectScreen.xnb
+Content\TitleScreen.xnb
+Content\Images\Menu\startgame.xnb
+Content\Images\Menu\howtoplay.xnb
+Content\Images\Menu\options.xnb
+Content\Images\Menu\quitgame.xnb
