@@ -2,24 +2,6 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>ControllerDetectScreen.png</Source>
-      <Name>ControllerDetectScreen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\ControllerDetectScreen.xnb</Output>
-      <Time>2014-04-21T23:01:22.4164547+02:00</Time>
-    </Item>
-    <Item>
-      <Source>TitleScreen.png</Source>
-      <Name>TitleScreen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\TitleScreen.xnb</Output>
-      <Time>2014-04-21T23:01:29.2668465+02:00</Time>
-    </Item>
-    <Item>
       <Source>Images\Menu\startgame.png</Source>
       <Name>Images\Menu\startgame</Name>
       <Importer>TextureImporter</Importer>
@@ -54,6 +36,33 @@
       <Options>None</Options>
       <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\Images\Menu\quitgame.xnb</Output>
       <Time>2014-04-22T20:58:04.9790536+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\Background\optionsS.png</Source>
+      <Name>Images\Menu\Background\optionsS</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\Images\Menu\Background\optionsS.xnb</Output>
+      <Time>2014-04-26T12:56:30.9675403+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\Background\howtoplayS.png</Source>
+      <Name>Images\Menu\Background\howtoplayS</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\Images\Menu\Background\howtoplayS.xnb</Output>
+      <Time>2014-04-26T13:10:50.5367049+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\Background\playS.png</Source>
+      <Name>Images\Menu\Background\playS</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\Images\Menu\Background\playS.xnb</Output>
+      <Time>2014-04-26T13:21:06.4519332+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

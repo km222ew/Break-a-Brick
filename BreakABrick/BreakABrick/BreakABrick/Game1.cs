@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using BreakABrick.Screens;
 
 namespace BreakABrick
 {
@@ -19,9 +20,12 @@ namespace BreakABrick
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        MainMenu mMainMenu;
+        MainMenu mainMenu;
+        Options options;
+        HowToPlay howToPlay;
+        Play play;
 
-        Screen mCurrentScreen;
+        Screen currentScreen;
 
         public Game1()
         {
@@ -56,9 +60,12 @@ namespace BreakABrick
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            mMainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
+            mainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
+            options = new Options(this.Content, new EventHandler(OptionsEvent), this);
+            howToPlay = new HowToPlay(this.Content, new EventHandler(HowToPlayEvent), this);
+            play = new Play(this.Content, new EventHandler(PlayEvent), this);
 
-            mCurrentScreen = mMainMenu;
+            currentScreen = mainMenu;
         }
 
         /// <summary>
@@ -81,7 +88,7 @@ namespace BreakABrick
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            mCurrentScreen.Update(gameTime);
+            currentScreen.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -95,7 +102,7 @@ namespace BreakABrick
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            mCurrentScreen.Draw(spriteBatch);
+            currentScreen.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -103,7 +110,36 @@ namespace BreakABrick
 
         public void MainMenuEvent(object obj, EventArgs e)
         {
-            
+            ScreenChoice sc = (ScreenChoice)e;
+            switch (sc.choice)
+            {
+                case 0:
+                    currentScreen = play;
+                    break;
+                case 1:
+                    currentScreen = howToPlay;
+                    break;
+                case 2:
+                    currentScreen = options;
+                    break;                
+                default:
+                    break;
+            }
+        }
+
+        public void OptionsEvent(object obj, EventArgs e)
+        {
+            currentScreen = mainMenu;
+        }
+
+        public void HowToPlayEvent(object obj, EventArgs e)
+        {
+            currentScreen = mainMenu;
+        }
+
+        public void PlayEvent(object obj, EventArgs e)
+        {
+            //currentScreen = pausMenu;
         }
     }
 }

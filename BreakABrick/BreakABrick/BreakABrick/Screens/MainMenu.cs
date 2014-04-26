@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
-namespace BreakABrick
+namespace BreakABrick.Screens
 {
     enum MenuButtonState
     {
@@ -20,13 +20,14 @@ namespace BreakABrick
     class MainMenu : Screen
     {
         const int menuButtons = 4,
-            startGameIndex = 0,
-            howToPlayIndex = 1,
-            optionsIndex = 2,
-            quitGameIndex = 3;
-        int menuButtonHeight = 70,
-            menuButtonWidth = 180;
+            startGameIndex    = 0,
+            howToPlayIndex    = 1,
+            optionsIndex      = 2,
+            quitGameIndex     = 3;
+        int menuButtonHeight  = 70,
+            menuButtonWidth   = 180;
         Game1 game;
+
 
         Texture2D[] menuButtonTexture = new Texture2D[menuButtons];
         Rectangle[] menuButtonRectangle = new Rectangle[menuButtons];
@@ -41,7 +42,36 @@ namespace BreakABrick
         //double frame_time;
 
         // determine state and color of button
-        void update_buttons()
+
+        public MainMenu(ContentManager content, EventHandler screenEvent, Game1 game1)
+            : base(screenEvent)
+        {
+            menuButtonTexture[startGameIndex] = content.Load<Texture2D>(@"Images/Menu/startgame");
+            menuButtonTexture[howToPlayIndex] = content.Load<Texture2D>(@"Images/Menu/howtoplay");
+            menuButtonTexture[optionsIndex] = content.Load<Texture2D>(@"Images/Menu/options");
+            menuButtonTexture[quitGameIndex] = content.Load<Texture2D>(@"Images/Menu/quitgame");
+
+            game = game1;
+
+            MenuButtonsPrep();
+
+        }
+
+        public void MenuButtonsPrep()
+        {
+            int x = (game.Window.ClientBounds.Width - menuButtonWidth) / 2;
+            int y = game.Window.ClientBounds.Height / 2 - menuButtons / 2 *
+                menuButtonHeight - (menuButtons % 2) * menuButtonHeight / 2
+                +50;
+            for (int i = 0; i < menuButtons; i++)
+            {
+                menuButtonColor[i] = Color.White;
+                menuButtonRectangle[i] = new Rectangle(x, y, menuButtonWidth, menuButtonHeight);
+                y += menuButtonHeight + 10;
+            }
+        }
+
+        void ButtonsUpdate()
         {
             for (int i = 0; i < menuButtons; i++)
             {
@@ -81,53 +111,24 @@ namespace BreakABrick
             }
         }
 
-        void ButtonChoice(int i)
+        void ButtonChoice(int button)
         {
-            switch (i)
+            switch (button)
             {
-                case startGameIndex:
-
+                case startGameIndex:                    
+                    screenEvent.Invoke(this, new ScreenChoice(0));
                     break;
                 case howToPlayIndex:
-
+                    screenEvent.Invoke(this, new ScreenChoice(1));                 
                     break;
                 case optionsIndex:
-
+                    screenEvent.Invoke(this, new ScreenChoice(2));
                     break;
                 case quitGameIndex:
                     game.Exit();
                     break;
-                default:
-                    break;
             }
-        }
-
-        public MainMenu(ContentManager content, EventHandler screenEvent, Game1 game1)
-            : base(screenEvent)
-        {
-            menuButtonTexture[startGameIndex] = content.Load<Texture2D>(@"Images/Menu/startgame");
-            menuButtonTexture[howToPlayIndex] = content.Load<Texture2D>(@"Images/Menu/howtoplay");
-            menuButtonTexture[optionsIndex] = content.Load<Texture2D>(@"Images/Menu/options");
-            menuButtonTexture[quitGameIndex] = content.Load<Texture2D>(@"Images/Menu/quitgame");
-
-            game = game1;
-
-            MenuButtonsPrep();
-
-        }
-
-        public void MenuButtonsPrep()
-        {
-            int x = (game.Window.ClientBounds.Width - menuButtonWidth) / 2;
-            int y = game.Window.ClientBounds.Height / 2 - menuButtons / 2 *
-                menuButtonHeight - (menuButtons % 2) * menuButtonHeight / 2;
-            for (int i = 0; i < menuButtons; i++)
-            {
-                menuButtonColor[i] = Color.White;
-                menuButtonRectangle[i] = new Rectangle(x, y, menuButtonWidth, menuButtonHeight);
-                y += menuButtonHeight + 10;
-            }
-        }
+        }        
 
         public override void Update(GameTime gameTime)
         {
@@ -137,7 +138,7 @@ namespace BreakABrick
             prevMouseState = currMouseState;
             currMouseState = mouseState.LeftButton == ButtonState.Pressed;
 
-            update_buttons();
+            ButtonsUpdate();
 
             base.Update(gameTime);
         }

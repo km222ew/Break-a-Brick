@@ -5,15 +5,16 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BreakABrick
+namespace BreakABrick.Screens
 {
     class Screen
     {
-        protected EventHandler ScreenEvent;
+        protected EventHandler screenEvent;
         public Screen(EventHandler screenEvent)
         { 
-            ScreenEvent = screenEvent;
+            this.screenEvent = screenEvent;
         }
+
 
         public virtual void Update(GameTime gameTime)
         { 
