@@ -64,6 +64,15 @@
       <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\Images\Menu\Background\playS.xnb</Output>
       <Time>2014-04-26T13:21:06.4519332+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Menu\back.png</Source>
+      <Name>Images\Menu\back</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Debug\Content\Images\Menu\back.xnb</Output>
+      <Time>2014-04-26T17:27:41.5221628+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{DEA877ED-69A2-4D06-B5E3-175448ED1F0A}</ContentProjectGUID>
