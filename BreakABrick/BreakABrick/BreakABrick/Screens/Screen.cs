@@ -15,7 +15,6 @@ namespace BreakABrick.Screens
             this.screenEvent = screenEvent;
         }
 
-
         public virtual void Update(GameTime gameTime)
         { 
             

@@ -25,6 +25,8 @@ namespace BreakABrick
         HowToPlay howToPlay;
         Play play;
 
+        Rectangle gameField;
+
         Screen currentScreen;
 
         public Game1()
@@ -32,9 +34,15 @@ namespace BreakABrick
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            //storleken på fönstret
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;
+
+            gameField = new Rectangle(
+                0,
+                0,
+                graphics.PreferredBackBufferWidth,
+                graphics.PreferredBackBufferHeight);
+
         }
 
         /// <summary>
@@ -44,10 +52,7 @@ namespace BreakABrick
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize()
-        {
-            //visa muspekaren
-            IsMouseVisible = true;
-
+        {      
             base.Initialize();
         }
 
@@ -63,8 +68,9 @@ namespace BreakABrick
             mainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
             options = new Options(this.Content, new EventHandler(OptionsEvent), this);
             howToPlay = new HowToPlay(this.Content, new EventHandler(HowToPlayEvent), this);
-            play = new Play(this.Content, new EventHandler(PlayEvent), this);
+            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
 
+            IsMouseVisible = true;
             currentScreen = mainMenu;
         }
 
@@ -114,6 +120,7 @@ namespace BreakABrick
             switch (sc.choice)
             {
                 case 0:
+                    IsMouseVisible = false;
                     currentScreen = play;
                     break;
                 case 1:
@@ -139,6 +146,7 @@ namespace BreakABrick
 
         public void PlayEvent(object obj, EventArgs e)
         {
+            IsMouseVisible = true;
             //currentScreen = pausMenu;
         }
     }

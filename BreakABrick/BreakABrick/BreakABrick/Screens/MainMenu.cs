@@ -28,7 +28,6 @@ namespace BreakABrick.Screens
             menuButtonWidth   = 180;
         Game1 game;
 
-
         Texture2D[] menuButtonTexture = new Texture2D[menuButtons];
         Rectangle[] menuButtonRectangle = new Rectangle[menuButtons];
         Color[] menuButtonColor = new Color[menuButtons];
@@ -38,10 +37,6 @@ namespace BreakABrick.Screens
         bool currMouseState, prevMouseState = false;
 
         int mousePosX, mousePosY;
-
-        //double frame_time;
-
-        // determine state and color of button
 
         public MainMenu(ContentManager content, EventHandler screenEvent, Game1 game1)
             : base(screenEvent)
@@ -54,6 +49,7 @@ namespace BreakABrick.Screens
             game = game1;
 
             MenuButtonsPrep();
+
 
         }
 
@@ -79,16 +75,13 @@ namespace BreakABrick.Screens
 	            {		 	
                     if (currMouseState)
                     {
-                        // mouse is currently down
                         menuButtonState[i] = MenuButtonState.MouseButtonDown;
                         menuButtonColor[i] = Color.Purple;
                     }
                     else if (!currMouseState && prevMouseState)
                     {
-                        // mouse was just released
                         if (menuButtonState[i] == MenuButtonState.MouseButtonDown)
                         {
-                            // button i was just down
                             menuButtonState[i] = MenuButtonState.MouseButtonReleased;
                         }
                     }

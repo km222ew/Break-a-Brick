@@ -48,16 +48,13 @@ namespace BreakABrick.Screens
             {
                 if (currMouseState)
                 {
-                    // mouse is currently down
                     menuButtonState = MenuButtonState.MouseButtonDown;
                     menuButtonColor = Color.Purple;
                 }
                 else if (!currMouseState && prevMouseState)
                 {
-                    // mouse was just released
                     if (menuButtonState == MenuButtonState.MouseButtonDown)
                     {
-                        // button i was just down
                         menuButtonState = MenuButtonState.MouseButtonReleased;
                     }
                 }

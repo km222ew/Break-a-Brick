@@ -7,3 +7,4 @@ Content\Images\Menu\Background\howtoplayS.xnb
 Content\Images\Menu\Background\playS.xnb
 Content\Images\Menu\back.xnb
 Content\Images\Game\paddle.xnb
+Content\Images\Game\gameHud.xnb
