@@ -17,11 +17,21 @@ namespace BreakABrick.GameComponents
 
         Rectangle gameField;
 
-        public Paddle(Texture2D texture, Rectangle gameField )
+        public Vector2 Position
+        {
+            get { return position; }
+        }
+
+        public Paddle(Texture2D texture, Rectangle gameField)
         {
             this.texture = texture;
             this.gameField = gameField;
 
+            StartPosition();
+        }
+
+        public void StartPosition()
+        {
             position.X = (gameField.Width - texture.Width) / 2;
             position.Y = gameField.Height - texture.Height - 30;
         }
@@ -36,7 +46,7 @@ namespace BreakABrick.GameComponents
                 {
                     position.X = 151;
                 }
-                if (mouseState.X + texture.Width > gameField.Width - 151)
+                if (mouseState.X + texture.Width + 151 > gameField.Width)
                 {
                     position.X = gameField.Width - texture.Width - 151;
                 }

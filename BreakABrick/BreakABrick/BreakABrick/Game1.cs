@@ -37,6 +37,11 @@ namespace BreakABrick
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;
 
+            //graphics.IsFullScreen = true;
+            //graphics.ApplyChanges();
+
+            
+
             gameField = new Rectangle(
                 0,
                 0,
@@ -68,7 +73,7 @@ namespace BreakABrick
             mainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
             options = new Options(this.Content, new EventHandler(OptionsEvent), this);
             howToPlay = new HowToPlay(this.Content, new EventHandler(HowToPlayEvent), this);
-            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
+            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField );
 
             IsMouseVisible = true;
             currentScreen = mainMenu;
@@ -147,7 +152,8 @@ namespace BreakABrick
         public void PlayEvent(object obj, EventArgs e)
         {
             IsMouseVisible = true;
-            //currentScreen = pausMenu;
+            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
+            currentScreen = mainMenu;
         }
     }
 }

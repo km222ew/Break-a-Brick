@@ -8,3 +8,8 @@ Content\Images\Menu\Background\playS.xnb
 Content\Images\Menu\back.xnb
 Content\Images\Game\paddle.xnb
 Content\Images\Game\gameHud.xnb
+Content\Images\Game\paddle1.xnb
+Content\Images\Game\ball.xnb
+Content\Images\Menu\Background\pausbackground.xnb
+Content\Images\Game\paddle2.xnb
+Content\Images\Game\brick.xnb
