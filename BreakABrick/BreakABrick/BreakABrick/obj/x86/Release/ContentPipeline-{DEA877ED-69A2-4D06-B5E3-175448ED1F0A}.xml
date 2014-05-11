@@ -136,6 +136,69 @@
       <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\brick.xnb</Output>
       <Time>2014-05-04T13:26:36.608379+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Menu\continuegame.png</Source>
+      <Name>Images\Menu\continuegame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\continuegame.xnb</Output>
+      <Time>2014-05-09T15:32:24.8707183+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\mainmenu.png</Source>
+      <Name>Images\Menu\mainmenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\mainmenu.xnb</Output>
+      <Time>2014-05-09T15:32:25.3587462+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\restart.png</Source>
+      <Name>Images\Menu\restart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\restart.xnb</Output>
+      <Time>2014-05-09T15:32:25.7797702+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Font\SpriteFont1.spritefont</Source>
+      <Name>Font\SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Font\SpriteFont1.xnb</Output>
+      <Time>2014-05-09T14:59:18.8031217+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\Background\box.png</Source>
+      <Name>Images\Menu\Background\box</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\Background\box.xnb</Output>
+      <Time>2014-05-09T16:38:12.9325345+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\nextlevel.png</Source>
+      <Name>Images\Menu\nextlevel</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\nextlevel.xnb</Output>
+      <Time>2014-05-09T17:14:44.4718834+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Font\SpriteFont2.spritefont</Source>
+      <Name>Font\SpriteFont2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Font\SpriteFont2.xnb</Output>
+      <Time>2014-05-09T16:27:40.0803374+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{DEA877ED-69A2-4D06-B5E3-175448ED1F0A}</ContentProjectGUID>

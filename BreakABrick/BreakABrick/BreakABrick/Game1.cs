@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using BreakABrick.Screens;
+using BreakABrick.ApplicationComponents;
 
 namespace BreakABrick
 {
@@ -34,20 +35,20 @@ namespace BreakABrick
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
+            //Fönstrets upplösning
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;
 
+            //Fullskärmsläge
             //graphics.IsFullScreen = true;
             //graphics.ApplyChanges();
 
-            
-
+            //Spelfält
             gameField = new Rectangle(
                 0,
                 0,
                 graphics.PreferredBackBufferWidth,
                 graphics.PreferredBackBufferHeight);
-
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace BreakABrick
         /// </summary>
         protected override void Initialize()
         {      
-            base.Initialize();
+            base.Initialize();           
         }
 
         /// <summary>
@@ -69,11 +70,13 @@ namespace BreakABrick
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             mainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
             options = new Options(this.Content, new EventHandler(OptionsEvent), this);
             howToPlay = new HowToPlay(this.Content, new EventHandler(HowToPlayEvent), this);
-            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField );
+            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
+
+            Audio.SoundBank.PlayCue("thearea");
 
             IsMouseVisible = true;
             currentScreen = mainMenu;
@@ -85,9 +88,9 @@ namespace BreakABrick
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
+        #region Update
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -99,11 +102,14 @@ namespace BreakABrick
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            Audio.AudioEngine.Update();
             currentScreen.Update(gameTime);
 
             base.Update(gameTime);
         }
+        #endregion
 
+        #region Draw
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -118,7 +124,9 @@ namespace BreakABrick
 
             base.Draw(gameTime);
         }
+        #endregion
 
+        #region Events
         public void MainMenuEvent(object obj, EventArgs e)
         {
             ScreenChoice sc = (ScreenChoice)e;
@@ -155,5 +163,7 @@ namespace BreakABrick
             play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
             currentScreen = mainMenu;
         }
+
+        #endregion
     }
 }

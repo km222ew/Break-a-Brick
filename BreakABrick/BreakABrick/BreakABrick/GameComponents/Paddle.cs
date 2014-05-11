@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using BreakABrick.ApplicationComponents;
 
 namespace BreakABrick.GameComponents
 {
@@ -12,8 +13,7 @@ namespace BreakABrick.GameComponents
     {
         Vector2 position;
         Texture2D texture;
-
-        MouseState mouseState;
+        int life;
 
         Rectangle gameField;
 
@@ -22,10 +22,17 @@ namespace BreakABrick.GameComponents
             get { return position; }
         }
 
-        public Paddle(Texture2D texture, Rectangle gameField)
+        public int Life
+        {
+            get { return life; }
+            set { life = value; }
+        }
+
+        public Paddle(Texture2D texture, Rectangle gameField, int life)
         {
             this.texture = texture;
             this.gameField = gameField;
+            this.life = life;
 
             StartPosition();
         }
@@ -36,9 +43,14 @@ namespace BreakABrick.GameComponents
             position.Y = gameField.Height - texture.Height - 30;
         }
 
-        public void Update()
+        public void RemoveLife()
         {
-            mouseState = Mouse.GetState();
+            Audio.SoundBank.PlayCue("lostlife");
+            life -= 1;
+        }
+
+        public void Update(MouseState mouseState)
+        {
 
             if (mouseState.X < 151|| mouseState.X + texture.Width + 151 > gameField.Width)
             {
@@ -61,6 +73,5 @@ namespace BreakABrick.GameComponents
         {
             spriteBatch.Draw(texture, position, Color.White);
         }
-
     }
 }

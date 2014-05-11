@@ -13,3 +13,18 @@ Content\Images\Game\ball.xnb
 Content\Images\Menu\Background\pausbackground.xnb
 Content\Images\Game\paddle2.xnb
 Content\Images\Game\brick.xnb
+Content\Images\Menu\continuegame.xnb
+Content\Images\Menu\mainmenu.xnb
+Content\Images\Menu\restart.xnb
+Content\Font\SpriteFont1.xnb
+Content\Images\Menu\Background\box.xnb
+Content\Images\Menu\nextlevel.xnb
+Content\Font\SpriteFont2.xnb
+Content\Audio\sounds.xgs
+Content\Audio\Wave Bank.xwb
+Content\Audio\Sound Bank.xsb
+Content\Levels\Level1.txt
+Content\Levels\Level2.txt
+Content\Levels\Level3.txt
+Content\Levels\Level4.txt
+Content\Levels\Level5.txt

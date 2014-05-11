@@ -6,20 +6,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using BreakABrick.ApplicationComponents;
 
 namespace BreakABrick.Screens
 {
-    enum MenuButtonState
-    {
-        Hover,
-        MouseButtonUp,
-        MouseButtonReleased,
-        MouseButtonDown
-    }
 
     class MainMenu : Screen
     {
-        const int menuButtons = 4,
+        #region Variabler och samlingar
+        const int nMenuButtons = 4,
             startGameIndex    = 0,
             howToPlayIndex    = 1,
             optionsIndex      = 2,
@@ -28,15 +24,12 @@ namespace BreakABrick.Screens
             menuButtonWidth   = 180;
         Game1 game;
 
-        Texture2D[] menuButtonTexture = new Texture2D[menuButtons];
-        Rectangle[] menuButtonRectangle = new Rectangle[menuButtons];
-        Color[] menuButtonColor = new Color[menuButtons];
+        List<Button> menuButtons = new List<Button>();
 
-        MenuButtonState[] menuButtonState = new MenuButtonState[menuButtons];
-
-        bool currMouseState, prevMouseState = false;
-
-        int mousePosX, mousePosY;
+        Texture2D[] menuButtonTexture = new Texture2D[nMenuButtons];
+        Rectangle[] menuButtonRectangle = new Rectangle[nMenuButtons];
+        Color[] menuButtonColor = new Color[nMenuButtons];
+        #endregion
 
         public MainMenu(ContentManager content, EventHandler screenEvent, Game1 game1)
             : base(screenEvent)
@@ -50,16 +43,20 @@ namespace BreakABrick.Screens
 
             MenuButtonsPrep();
 
+            for (int i = 0; i < nMenuButtons; i++)
+            {
+                menuButtons.Add(new Button(menuButtonTexture[i], menuButtonRectangle[i]));               
+            }
 
         }
 
         public void MenuButtonsPrep()
         {
             int x = (game.Window.ClientBounds.Width - menuButtonWidth) / 2;
-            int y = game.Window.ClientBounds.Height / 2 - menuButtons / 2 *
-                menuButtonHeight - (menuButtons % 2) * menuButtonHeight / 2
+            int y = game.Window.ClientBounds.Height / 2 - nMenuButtons / 2 *
+                menuButtonHeight - (nMenuButtons % 2) * menuButtonHeight / 2
                 +50;
-            for (int i = 0; i < menuButtons; i++)
+            for (int i = 0; i < nMenuButtons; i++)
             {
                 menuButtonColor[i] = Color.White;
                 menuButtonRectangle[i] = new Rectangle(x, y, menuButtonWidth, menuButtonHeight);
@@ -67,81 +64,43 @@ namespace BreakABrick.Screens
             }
         }
 
-        void ButtonsUpdate()
-        {
-            for (int i = 0; i < menuButtons; i++)
-            {
-                if (new Rectangle(mousePosX, mousePosY, 1, 1).Intersects(menuButtonRectangle[i]))
-	            {		 	
-                    if (currMouseState)
-                    {
-                        menuButtonState[i] = MenuButtonState.MouseButtonDown;
-                        menuButtonColor[i] = Color.Purple;
-                    }
-                    else if (!currMouseState && prevMouseState)
-                    {
-                        if (menuButtonState[i] == MenuButtonState.MouseButtonDown)
-                        {
-                            menuButtonState[i] = MenuButtonState.MouseButtonReleased;
-                        }
-                    }
-                    else
-                    {
-                        menuButtonState[i] = MenuButtonState.Hover;
-                        menuButtonColor[i] = Color.Pink;
-                    }
-                }
-                else
-                {
-                    menuButtonState[i] = MenuButtonState.MouseButtonUp;
-                    menuButtonColor[i] = Color.White;
-                }
-
-                if (menuButtonState[i] == MenuButtonState.MouseButtonReleased)
-                {
-                    ButtonChoice(i);
-                }
-            }
-        }
-
-        void ButtonChoice(int button)
-        {
-            switch (button)
-            {
-                case startGameIndex:                    
-                    screenEvent.Invoke(this, new ScreenChoice(0));
-                    break;
-                case howToPlayIndex:
-                    screenEvent.Invoke(this, new ScreenChoice(1));                 
-                    break;
-                case optionsIndex:
-                    screenEvent.Invoke(this, new ScreenChoice(2));
-                    break;
-                case quitGameIndex:
-                    game.Exit();
-                    break;
-            }
-        }        
-
+        #region Update
         public override void Update(GameTime gameTime)
         {
-            MouseState mouseState = Mouse.GetState();
-            mousePosX = mouseState.X;
-            mousePosY = mouseState.Y;
-            prevMouseState = currMouseState;
-            currMouseState = mouseState.LeftButton == ButtonState.Pressed;
-
-            ButtonsUpdate();
+            for (int i = 0; i < menuButtons.Count; i++)
+            {
+                if (menuButtons[i].ButtonUpdate())
+                {
+                    if (i == startGameIndex )
+                    {
+                        screenEvent.Invoke(this, new ScreenChoice(0));
+                    }
+                    if (i == howToPlayIndex)
+                    {
+                        screenEvent.Invoke(this, new ScreenChoice(1));
+                    }
+                    if (i == optionsIndex)
+                    {
+                        screenEvent.Invoke(this, new ScreenChoice(2));
+                    }
+                    if (i == quitGameIndex)
+                    {
+                        game.Exit();
+                    }
+                }
+            }
 
             base.Update(gameTime);
         }
+        #endregion
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < menuButtons; i++)
+            foreach (Button button in menuButtons)
             {
-                spriteBatch.Draw(menuButtonTexture[i], menuButtonRectangle[i], menuButtonColor[i]);
+                button.Draw(spriteBatch);
             }
+
             base.Draw(spriteBatch);
         }
     }

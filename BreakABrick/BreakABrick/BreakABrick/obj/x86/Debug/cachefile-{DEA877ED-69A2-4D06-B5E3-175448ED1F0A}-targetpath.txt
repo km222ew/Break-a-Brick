@@ -7,3 +7,19 @@ Content\Images\Menu\Background\howtoplayS.xnb
 Content\Images\Menu\Background\playS.xnb
 Content\Images\Menu\back.xnb
 Content\Images\Game\paddle.xnb
+Content\Images\Game\gameHud.xnb
+Content\Images\Game\paddle1.xnb
+Content\Images\Game\ball.xnb
+Content\Images\Menu\Background\pausbackground.xnb
+Content\Images\Game\paddle2.xnb
+Content\Images\Game\brick.xnb
+Content\Font\SpriteFont1.xnb
+Content\Images\Menu\continuegame.xnb
+Content\Images\Menu\mainmenu.xnb
+Content\Images\Menu\restart.xnb
+Content\Font\SpriteFont2.xnb
+Content\Images\Menu\Background\box.xnb
+Content\Images\Menu\nextlevel.xnb
+Content\Audio\sounds.xgs
+Content\Audio\Wave Bank.xwb
+Content\Audio\Sound Bank.xsb
