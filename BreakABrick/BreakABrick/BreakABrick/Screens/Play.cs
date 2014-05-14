@@ -31,7 +31,7 @@ namespace BreakABrick.Screens
         Vector2 ballMotion;
 
         //Aktuell bana, lista för brickor och grafik
-        int currentLevel = 2;
+        int currentLevel = 3;
         List<Brick> bricks = new List<Brick>();
         Texture2D brickTexture;
 
@@ -361,6 +361,7 @@ namespace BreakABrick.Screens
 
                 if (prevKeyboardState.IsKeyUp(Keys.Escape) && currKeyboardState.IsKeyDown(Keys.Escape))
                 {
+                    Audio.SoundBank.PlayCue("unpaus");
                     paused = false;
                 }                
             }
