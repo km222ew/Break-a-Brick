@@ -20,6 +20,10 @@ Content\Font\SpriteFont1.xnb
 Content\Images\Menu\Background\box.xnb
 Content\Images\Menu\nextlevel.xnb
 Content\Font\SpriteFont2.xnb
+Content\Images\Menu\Background\difficultybackground.xnb
+Content\Images\Menu\casual.xnb
+Content\Images\Menu\hard.xnb
+Content\Images\Menu\normal.xnb
 Content\Audio\sounds.xgs
 Content\Audio\Wave Bank.xwb
 Content\Audio\Sound Bank.xsb

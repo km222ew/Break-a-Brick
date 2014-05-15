@@ -199,6 +199,42 @@
       <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Font\SpriteFont2.xnb</Output>
       <Time>2014-05-09T16:27:40.0803374+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Menu\Background\difficultybackground.png</Source>
+      <Name>Images\Menu\Background\difficultybackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\Background\difficultybackground.xnb</Output>
+      <Time>2014-05-14T17:03:43.6480556+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\casual.png</Source>
+      <Name>Images\Menu\casual</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\casual.xnb</Output>
+      <Time>2014-05-14T22:07:57.881138+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\hard.png</Source>
+      <Name>Images\Menu\hard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\hard.xnb</Output>
+      <Time>2014-05-14T22:07:57.8831382+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\normal.png</Source>
+      <Name>Images\Menu\normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\normal.xnb</Output>
+      <Time>2014-05-14T22:07:57.8841382+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{DEA877ED-69A2-4D06-B5E3-175448ED1F0A}</ContentProjectGUID>

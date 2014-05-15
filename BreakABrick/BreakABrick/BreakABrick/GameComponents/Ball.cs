@@ -219,7 +219,7 @@ namespace BreakABrick.GameComponents
                     }
                     else if (ball.X + 20 >= paddle.X + 34 && ball.X + 20 <= paddle.X + 66)
                     {
-                        motion.X = (motion.X * 0.5f);
+                        motion.X = (motion.X * 0.1f);
                         motion.Y *= -1;
                     }
                     else if (ball.X + 20 >= paddle.X + 67 && ball.X <= paddle.X + 100)

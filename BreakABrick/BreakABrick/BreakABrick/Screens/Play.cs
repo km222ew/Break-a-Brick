@@ -13,6 +13,12 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace BreakABrick.Screens
 {
+    enum GameDifficulty
+    {
+        Casual,
+        Normal,
+        Hard
+    }
     class Play : Screen
     {
         #region Variabler och samlingar
@@ -31,11 +37,15 @@ namespace BreakABrick.Screens
         Vector2 ballMotion;
 
         //Aktuell bana, lista för brickor och grafik
-        int currentLevel = 3;
+        int currentLevel = 1;
         List<Brick> bricks = new List<Brick>();
         Texture2D brickTexture;
 
-        //Spelfält
+        //Svårighetsgrad
+        int difficulty;
+        string difficultyString;
+        
+        //Spelfält        
         Rectangle gameField;
         Game1 game;
 
@@ -98,11 +108,23 @@ namespace BreakABrick.Screens
 
         #region Konstruktor
 
-        public Play(ContentManager content, EventHandler screenEvent, Game1 game1, Rectangle gameField)
+        public Play(ContentManager content, EventHandler screenEvent, Game1 game1, Rectangle gameField, int difficulty)
         : base(screenEvent)
         {
             game = game1;
-
+            this.difficulty = difficulty;
+            if (difficulty == 0)
+            {
+                difficultyString = "Casual";
+            }
+            else if (difficulty == 1)
+            {
+                difficultyString = "Normal";
+            }
+            else
+            {
+                difficultyString = "Hard";
+            }
             this.gameField = gameField;
 
             //Grafik
@@ -129,7 +151,8 @@ namespace BreakABrick.Screens
             font2 = content.Load<SpriteFont>("Font/SpriteFont2");
 
             //spel-objekt
-            paddle = new Paddle(paddleTexture, gameField, 3);
+            
+            paddle = new Paddle(paddleTexture, gameField, Life(difficulty));
             ball = new Ball(ballTexture, gameField);
 
             nextLevelButton = new Button(nextLevelTexture, nextLevelRectangle = new Rectangle(440, 410, menuButtonWidth, menuButtonHeight));
@@ -150,6 +173,22 @@ namespace BreakABrick.Screens
         #endregion
 
         #region Metoder
+
+        public int Life(int difficulty)
+        {
+            if (difficulty == 0)
+            {
+                return 0;
+            }
+            else if (difficulty == 1)
+            {
+                return 3;
+            }
+            else
+            {
+                return 1;
+            }
+        }
 
         public void LoadLevel(int currentLevel)
         {
@@ -209,13 +248,7 @@ namespace BreakABrick.Screens
 
             LoadLevel(currentLevel);
 
-            //for (int i = 0; i < brickRows; i++)
-            //{
-            //    for (int j = 0; j < brickCols; j++)
-            //    {
-            //        bricks.Add(new Brick(brickTexture, new Rectangle((j*80) + 251, (i * 30) + 100, brickTexture.Width, brickTexture.Height)));
-            //    }
-            //}
+            paddle.Life = Life(difficulty);
 
             paddle.StartPosition();
             ball.Idle(paddle.Position);
@@ -256,7 +289,6 @@ namespace BreakABrick.Screens
                 if (prevKeyboardState.IsKeyUp(Keys.Escape) && currKeyboardState.IsKeyDown(Keys.Escape))
                 {
                     Audio.SoundBank.PlayCue("paus");
-                    //soundBank.PlayCue("paus");
                     paused = true;
                 }
 
@@ -265,18 +297,20 @@ namespace BreakABrick.Screens
                 if (active == 0 || ball.Position.Y > gameField.Height)
                 {
                     active = 0;
-
-                    if (ball.Position.Y > gameField.Height)
+                    if (difficulty >= 1)
                     {
-                        paddle.RemoveLife();
-
-                        if (paddle.Life == 0)
+                        if (ball.Position.Y > gameField.Height)
                         {
-                            Audio.SoundBank.PlayCue("gameover");
-                            GameTransition(1);
+                            paddle.RemoveLife();
+
+                            if (paddle.Life == 0)
+                            {
+                                Audio.SoundBank.PlayCue("gameover");
+                                GameTransition(1);
+                            }
                         }
                     }
-                    
+                                        
                     ball.Idle(paddle.Position);
 
                     if (currMouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
@@ -307,7 +341,11 @@ namespace BreakABrick.Screens
                         {
                             BrickSound();
                             bricks.RemoveAt(i);
-                            score += 100;
+
+                            if (difficulty >= 1)
+                            {
+                                score += 100;
+                            }                          
                         }
                     }
                 }
@@ -315,6 +353,12 @@ namespace BreakABrick.Screens
             else if (paused || gameOver || levelComplete)
             {
                 game.IsMouseVisible = true;
+
+                if (pausButtons[mainMenuIndex].ButtonUpdate())
+                {
+                    screenEvent.Invoke(this, new EventArgs());
+                }
+
                 if (levelComplete)
                 {
                     if (nextLevelButton.ButtonUpdate())
@@ -327,43 +371,67 @@ namespace BreakABrick.Screens
                         levelComplete = false;
                     }
                 }
-                
 
-                for (int i = 0; i < pausButtons.Count; i++)
+                if (gameOver || paused)
                 {
-                    if (pausButtons[i].ButtonUpdate())
+                    if (pausButtons[resetGameIndex].ButtonUpdate())
                     {
-                        if (i == continueGameIndex)
-                        {
-                            paused = false;
-                        }
-                        if (i == resetGameIndex)
-                        {
-                            pausButtons[mainMenuIndex].Rectangle = defaultMainMenuLocation;
-                            pausButtons[resetGameIndex].Rectangle = defaultResetGameLocation;
-                            active = 0;
-                            paddle.Life = 3;
-                            score = 0;
-                            NewGame();
-                            paused = false;
-                            gameOver = false;
-                        }
-                        if (i == mainMenuIndex)
-                        {
-                            screenEvent.Invoke(this, new EventArgs());
-                        }
-                        if (i == quitGameIndex)
-                        {
-                            game.Exit();
-                        }                  
+                        pausButtons[mainMenuIndex].Rectangle = defaultMainMenuLocation;
+                        pausButtons[resetGameIndex].Rectangle = defaultResetGameLocation;
+                        active = 0;
+                        paddle.Life = 3;
+                        score = 0;
+                        NewGame();
+                        paused = false;
+                        gameOver = false;
                     }
                 }
 
-                if (prevKeyboardState.IsKeyUp(Keys.Escape) && currKeyboardState.IsKeyDown(Keys.Escape))
+                if (paused)
                 {
-                    Audio.SoundBank.PlayCue("unpaus");
-                    paused = false;
-                }                
+                    if (pausButtons[continueGameIndex].ButtonUpdate())
+                    {
+                        paused = false;
+                    }
+                    if (pausButtons[quitGameIndex].ButtonUpdate())
+                    {
+                        game.Exit();
+                    }
+                    if (prevKeyboardState.IsKeyUp(Keys.Escape) && currKeyboardState.IsKeyDown(Keys.Escape))
+                    {
+                        Audio.SoundBank.PlayCue("unpaus");
+                        paused = false;
+                    }   
+                }
+                    //for (int i = 0; i < pausButtons.Count; i++)
+                    //{
+                    //    if (pausButtons[i].ButtonUpdate())
+                    //    {
+                    //        if (i == continueGameIndex)
+                    //        {
+                    //            paused = false;
+                    //        }
+                    //        if (i == resetGameIndex)
+                    //        {
+                    //            pausButtons[mainMenuIndex].Rectangle = defaultMainMenuLocation;
+                    //            pausButtons[resetGameIndex].Rectangle = defaultResetGameLocation;
+                    //            active = 0;
+                    //            paddle.Life = 3;
+                    //            score = 0;
+                    //            NewGame();
+                    //            paused = false;
+                    //            gameOver = false;
+                    //        }
+                    //        if (i == mainMenuIndex)
+                    //        {
+                    //            screenEvent.Invoke(this, new EventArgs());
+                    //        }
+                    //        if (i == quitGameIndex)
+                    //        {
+                    //            game.Exit();
+                    //        }
+                    //    }
+                    //}             
             }
 
             prevMouseState = currMouseState;
@@ -378,9 +446,15 @@ namespace BreakABrick.Screens
         {
             spriteBatch.Draw(playBackground, Vector2.Zero, Color.White);
             spriteBatch.Draw(playHud, Vector2.Zero, Color.White);
-            spriteBatch.DrawString(font, "Lives \n" + paddle.Life, new Vector2(1140, 80), Color.HotPink);
-            spriteBatch.DrawString(font, "Score \n" + score, new Vector2(1140, 15), Color.HotPink);
+
+            if (difficulty >= 1)
+            {
+                spriteBatch.DrawString(font, "Lives \n" + paddle.Life, new Vector2(1140, 80), Color.HotPink);
+                spriteBatch.DrawString(font, "Score \n" + score, new Vector2(1140, 15), Color.HotPink);
+            }
+            
             spriteBatch.DrawString(font, "Level \n" + currentLevel, new Vector2(10, 15), Color.HotPink);
+            spriteBatch.DrawString(font, difficultyString, new Vector2(10, 80), Color.HotPink);
             spriteBatch.DrawString(font2, "ESC = Pause", new Vector2(10, 680), Color.HotPink);
 
             paddle.Draw(spriteBatch);
@@ -403,9 +477,12 @@ namespace BreakABrick.Screens
 
                     spriteBatch.Draw(menuBox, new Vector2((game.Window.ClientBounds.Width - menuBox.Width) / 2, 200), Color.MediumPurple);
 
+                    if (difficulty >= 1)
+                    {
+                        spriteBatch.DrawString(font, score.ToString(), new Vector2(720, 260), Color.HotPink);
+                        spriteBatch.DrawString(font, "Your Score", new Vector2(450, 260), Color.HotPink);
+                    }
                     
-                    spriteBatch.DrawString(font, score.ToString(), new Vector2(720, 260), Color.HotPink);
-                    spriteBatch.DrawString(font, "Your Score", new Vector2(450, 260), Color.HotPink);
                     pausButtons[mainMenuIndex].Draw(spriteBatch);
 
                     if (gameOver)

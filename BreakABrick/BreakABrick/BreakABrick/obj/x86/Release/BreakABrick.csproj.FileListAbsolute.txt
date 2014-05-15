@@ -34,3 +34,7 @@ C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABr
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Levels\Level3.txt
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Levels\Level4.txt
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Levels\Level5.txt
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\Background\difficultybackground.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\casual.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\hard.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\normal.xnb

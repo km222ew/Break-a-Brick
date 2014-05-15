@@ -25,6 +25,7 @@ namespace BreakABrick
         Options options;
         HowToPlay howToPlay;
         Play play;
+        Difficulty difficulty;
 
         Rectangle gameField;
 
@@ -74,7 +75,8 @@ namespace BreakABrick
             mainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
             options = new Options(this.Content, new EventHandler(OptionsEvent), this);
             howToPlay = new HowToPlay(this.Content, new EventHandler(HowToPlayEvent), this);
-            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
+            //play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
+            difficulty = new Difficulty(this.Content, new EventHandler(DifficultyEvent), this);
 
             Audio.SoundBank.PlayCue("thearea");
 
@@ -133,8 +135,7 @@ namespace BreakABrick
             switch (sc.choice)
             {
                 case 0:
-                    IsMouseVisible = false;
-                    currentScreen = play;
+                    currentScreen = difficulty;
                     break;
                 case 1:
                     currentScreen = howToPlay;
@@ -160,8 +161,24 @@ namespace BreakABrick
         public void PlayEvent(object obj, EventArgs e)
         {
             IsMouseVisible = true;
-            play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
+            //play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
             currentScreen = mainMenu;
+        }
+
+        public void DifficultyEvent(object obj, EventArgs e)
+        {
+
+            ScreenChoice sc = (ScreenChoice)e;            
+
+            if (sc.choice <= 2)
+            {
+                play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField, sc.choice);
+                currentScreen = play;
+            }
+            else
+            {
+                currentScreen = mainMenu;
+            }
         }
 
         #endregion
