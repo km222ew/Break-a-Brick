@@ -38,3 +38,10 @@ C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABr
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\casual.xnb
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\hard.xnb
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\normal.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\checkbox.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\checkboxon.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\paddleup.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\points.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\life.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\paddledown.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\multiball.xnb

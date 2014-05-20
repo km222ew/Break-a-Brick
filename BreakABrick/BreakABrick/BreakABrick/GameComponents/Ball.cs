@@ -43,6 +43,14 @@ namespace BreakABrick.GameComponents
             this.gameField = gameField;
         }
 
+        public Ball(Texture2D texture, Rectangle gameField, Vector2 position, Vector2 motion)
+        {
+            this.texture = texture;
+            this.gameField = gameField;
+            this.position = position;
+            this.motion = motion;
+        }
+
         #region Update
         public void Update()
         {
@@ -97,8 +105,8 @@ namespace BreakABrick.GameComponents
 
                 Audio.SoundBank.PlayCue("ballhit");
 
-                if (mouseState.LeftButton == ButtonState.Pressed)
-                {
+                //if (mouseState.LeftButton == ButtonState.Pressed)
+                //{
                     //Om bollen åker åt höger...
                     if (motion.X > 0)
                     {
@@ -209,29 +217,29 @@ namespace BreakABrick.GameComponents
                             motion.Y *= -1;
                         }
                     }
-                }
-                else
-                {
-                    if (ball.X + 20 >= paddle.X && ball.X + 20 <= (paddle.X + 33))
-                    {
-                        motion.X = (6 + randSpeed.Next(-3, 4)) * -1;
-                        motion.Y *= -1;
-                    }
-                    else if (ball.X + 20 >= paddle.X + 34 && ball.X + 20 <= paddle.X + 66)
-                    {
-                        motion.X = (motion.X * 0.1f);
-                        motion.Y *= -1;
-                    }
-                    else if (ball.X + 20 >= paddle.X + 67 && ball.X <= paddle.X + 100)
-                    {
-                        motion.X = (6 + randSpeed.Next(-3, 4));
-                        motion.Y *= -1;
-                    }
-                    else
-                    {
-                        motion.X *= -1;
-                    }
-                }
+                //}
+                //else
+                //{
+                //    if (ball.X + 20 >= paddle.X && ball.X + 20 <= (paddle.X + 33))
+                //    {
+                //        motion.X = (6 + randSpeed.Next(-3, 4)) * -1;
+                //        motion.Y *= -1;
+                //    }
+                //    else if (ball.X + 20 >= paddle.X + 34 && ball.X + 20 <= paddle.X + 66)
+                //    {
+                //        motion.X = (motion.X * 0.1f);
+                //        motion.Y *= -1;
+                //    }
+                //    else if (ball.X + 20 >= paddle.X + 67 && ball.X <= paddle.X + 100)
+                //    {
+                //        motion.X = (6 + randSpeed.Next(-3, 4));
+                //        motion.Y *= -1;
+                //    }
+                //    else
+                //    {
+                //        motion.X *= -1;
+                //    }
+                //}
         
 
                 //motion.X = motion.X + (paddle.X * 0.003f);
@@ -478,7 +486,7 @@ namespace BreakABrick.GameComponents
         }
         #endregion
 
-        public void Idle(Vector2 paddle)
+        public void Idle(Rectangle paddle)
         {
             position.X = paddle.X + 40;
             position.Y = paddle.Y - 20;

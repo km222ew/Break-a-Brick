@@ -235,6 +235,69 @@
       <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\normal.xnb</Output>
       <Time>2014-05-14T22:07:57.8841382+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Menu\checkbox.png</Source>
+      <Name>Images\Menu\checkbox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\checkbox.xnb</Output>
+      <Time>2014-05-15T17:04:51.6717437+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Menu\checkboxon.png</Source>
+      <Name>Images\Menu\checkboxon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\checkboxon.xnb</Output>
+      <Time>2014-05-15T17:08:28.5571488+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Game\Powerups\paddleup.png</Source>
+      <Name>Images\Game\Powerups\paddleup</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\paddleup.xnb</Output>
+      <Time>2014-05-17T22:06:11.4294758+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Game\Powerups\points.png</Source>
+      <Name>Images\Game\Powerups\points</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\points.xnb</Output>
+      <Time>2014-05-17T22:24:05.2298937+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Game\Powerups\life.png</Source>
+      <Name>Images\Game\Powerups\life</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\life.xnb</Output>
+      <Time>2014-05-17T14:41:53.7307426+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Game\Powerups\paddledown.png</Source>
+      <Name>Images\Game\Powerups\paddledown</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\paddledown.xnb</Output>
+      <Time>2014-05-17T23:00:13.3259017+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Game\Powerups\multiball.png</Source>
+      <Name>Images\Game\Powerups\multiball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\multiball.xnb</Output>
+      <Time>2014-05-18T15:12:02.0979727+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{DEA877ED-69A2-4D06-B5E3-175448ED1F0A}</ContentProjectGUID>

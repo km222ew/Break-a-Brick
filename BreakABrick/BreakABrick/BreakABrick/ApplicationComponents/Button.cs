@@ -37,6 +37,7 @@ namespace BreakABrick.ApplicationComponents
         public Texture2D Texture
         {
             get { return texture; }
+            set { texture = value; }
         }
 
         public Rectangle Rectangle

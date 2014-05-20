@@ -24,6 +24,13 @@ Content\Images\Menu\Background\difficultybackground.xnb
 Content\Images\Menu\casual.xnb
 Content\Images\Menu\hard.xnb
 Content\Images\Menu\normal.xnb
+Content\Images\Menu\checkbox.xnb
+Content\Images\Menu\checkboxon.xnb
+Content\Images\Game\Powerups\paddleup.xnb
+Content\Images\Game\Powerups\points.xnb
+Content\Images\Game\Powerups\life.xnb
+Content\Images\Game\Powerups\paddledown.xnb
+Content\Images\Game\Powerups\multiball.xnb
 Content\Audio\sounds.xgs
 Content\Audio\Wave Bank.xwb
 Content\Audio\Sound Bank.xsb

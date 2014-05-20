@@ -21,15 +21,20 @@ namespace BreakABrick
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        //Skärmar
         MainMenu mainMenu;
         Options options;
         HowToPlay howToPlay;
         Play play;
         Difficulty difficulty;
 
+        //Spelfält
         Rectangle gameField;
 
+        //Aktuell skärm
         Screen currentScreen;
+
+        
 
         public Game1()
         {
@@ -39,10 +44,6 @@ namespace BreakABrick
             //Fönstrets upplösning
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;
-
-            //Fullskärmsläge
-            //graphics.IsFullScreen = true;
-            //graphics.ApplyChanges();
 
             //Spelfält
             gameField = new Rectangle(
@@ -72,15 +73,19 @@ namespace BreakABrick
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Skapar nya skärmar
             mainMenu = new MainMenu(this.Content, new EventHandler(MainMenuEvent), this);
-            options = new Options(this.Content, new EventHandler(OptionsEvent), this);
+            options = new Options(this.Content, new EventHandler(OptionsEvent), this, graphics);
             howToPlay = new HowToPlay(this.Content, new EventHandler(HowToPlayEvent), this);
-            //play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
             difficulty = new Difficulty(this.Content, new EventHandler(DifficultyEvent), this);
 
+            //Sätter igång bakgrundsmusiken
             Audio.SoundBank.PlayCue("thearea");
 
+            //Visar muspekaren i fönstret
             IsMouseVisible = true;
+
+            //Sätter startskärm till huvudmenyn
             currentScreen = mainMenu;
         }
 
@@ -104,7 +109,10 @@ namespace BreakABrick
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            //Uppdaterar ljudet
             Audio.AudioEngine.Update();
+
+            //Uppdaterar aktuell skärm
             currentScreen.Update(gameTime);
 
             base.Update(gameTime);
@@ -112,6 +120,7 @@ namespace BreakABrick
         #endregion
 
         #region Draw
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -120,15 +129,20 @@ namespace BreakABrick
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            //Ritar aktuell skärm
             spriteBatch.Begin();
             currentScreen.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
+
         #endregion
 
+        //Vad som händer när en skärm invokar ett event ("återvänder") till Game1
         #region Events
+        
+        //Skärm sätts beroende på vilket val man gjorde i huvudmenyn
         public void MainMenuEvent(object obj, EventArgs e)
         {
             ScreenChoice sc = (ScreenChoice)e;
@@ -161,13 +175,12 @@ namespace BreakABrick
         public void PlayEvent(object obj, EventArgs e)
         {
             IsMouseVisible = true;
-            //play = new Play(this.Content, new EventHandler(PlayEvent), this, gameField);
             currentScreen = mainMenu;
         }
 
+        //När man återvänder från svårighetsgrader startar spelet med vald svårighetsgrad, eller återvänder till huvudmenyn
         public void DifficultyEvent(object obj, EventArgs e)
         {
-
             ScreenChoice sc = (ScreenChoice)e;            
 
             if (sc.choice <= 2)

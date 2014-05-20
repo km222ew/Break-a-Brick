@@ -81,6 +81,13 @@
     <Compile Include="GameComponents\Ball.cs" />
     <Compile Include="GameComponents\Brick.cs" />
     <Compile Include="GameComponents\Paddle.cs" />
+    <Compile Include="GameComponents\PowerUp.cs" />
+    <Compile Include="GameComponents\PowerUps\ExtraLife.cs" />
+    <Compile Include="GameComponents\PowerUps\ExtraPoints.cs" />
+    <Compile Include="GameComponents\PowerUps\MultiBall.cs" />
+    <Compile Include="GameComponents\PowerUps\PaddleDown.cs" />
+    <Compile Include="GameComponents\PowerUps\PaddleShoot.cs" />
+    <Compile Include="GameComponents\PowerUps\PaddleUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

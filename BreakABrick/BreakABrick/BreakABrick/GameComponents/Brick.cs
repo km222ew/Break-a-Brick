@@ -12,6 +12,8 @@ namespace BreakABrick.GameComponents
     {
         Texture2D texture;
         Rectangle position;
+        int life;
+        Color color;
 
         public Rectangle Position
         {
@@ -19,15 +21,33 @@ namespace BreakABrick.GameComponents
             set { position = value; }
         }
 
-        public Brick(Texture2D texture, Rectangle position)
+        public int Life
+        {
+            get { return life; }
+            set { life = value; }
+        }
+
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+        public Brick(Texture2D texture, Rectangle position, int life)
         {
             this.texture = texture;
             this.position = position;
+            this.life = life;
+        }
+
+        public void RemoveLife()
+        {
+            life -= 1;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            spriteBatch.Draw(texture, position, color);
         }
     }
 }
