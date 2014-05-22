@@ -104,6 +104,7 @@ namespace BreakABrick.Screens
 
         //powerups
         int paddleSize;
+        Texture2D laserTexture;
         Texture2D paddleShootTexture;
         Texture2D extraLifeTexture;
         Texture2D paddleUpTexture;
@@ -111,8 +112,11 @@ namespace BreakABrick.Screens
         Texture2D extraPointsTexture;
         Texture2D multiBallTexture;
         List<PowerUp> powerups = new List<PowerUp>();
+        List<Laser> laserShots = new List<Laser>();
         Random probability = new Random();
-        
+        bool canShoot = false;
+        double shootTimer;
+
         #endregion
 
         #region Konstruktor
@@ -142,16 +146,18 @@ namespace BreakABrick.Screens
             //Grafik
             playBackground = content.Load<Texture2D>("Images/Menu/Background/playS");
             playHud = content.Load<Texture2D>("Images/Game/gameHud");
-            paddleTexture = content.Load<Texture2D>("Images/Game/paddle2");
-            ballTexture = content.Load<Texture2D>("Images/Game/ball");
-            brickTexture = content.Load<Texture2D>("Images/Game/brick");
+            paddleTexture = content.Load<Texture2D>("Images/Game/paddle5");
+            ballTexture = content.Load<Texture2D>("Images/Game/ball5");
+            brickTexture = content.Load<Texture2D>("Images/Game/brick3");
 
             //Powerups
-            extraLifeTexture = content.Load<Texture2D>("Images/Game/Powerups/life");
-            paddleUpTexture = content.Load<Texture2D>("Images/Game/Powerups/paddleup");
-            paddleDownTexture = content.Load<Texture2D>("Images/Game/Powerups/paddledown");
-            extraPointsTexture = content.Load<Texture2D>("Images/Game/Powerups/points");
-            multiBallTexture = content.Load<Texture2D>("Images/Game/Powerups/multiball");
+            extraLifeTexture = content.Load<Texture2D>("Images/Game/Powerups/life2");
+            paddleUpTexture = content.Load<Texture2D>("Images/Game/Powerups/paddleup3");
+            paddleDownTexture = content.Load<Texture2D>("Images/Game/Powerups/paddledown2");
+            extraPointsTexture = content.Load<Texture2D>("Images/Game/Powerups/points2");
+            multiBallTexture = content.Load<Texture2D>("Images/Game/Powerups/multiball2");
+            paddleShootTexture = content.Load<Texture2D>("Images/Game/Powerups/paddleshoot2");
+            laserTexture = content.Load<Texture2D>("Images/Game/Powerups/laser3");
 
             menuBox = content.Load<Texture2D>("Images/Menu/Background/box");
 
@@ -282,8 +288,6 @@ namespace BreakABrick.Screens
                 pausButtonRectangle[i] = new Rectangle(x, y, menuButtonWidth, menuButtonHeight);
                 y += menuButtonHeight + 10;
             }
-
-
         }
 
         public void NewGame()
@@ -291,6 +295,7 @@ namespace BreakABrick.Screens
             bricks.Clear();
             powerups.Clear();
             balls.Clear();
+            paddleSize = 0;
             balls.Add(new Ball(ballTexture, gameField));
 
             LoadLevel(currentLevel);
@@ -300,7 +305,6 @@ namespace BreakABrick.Screens
 
             paddle.StartPosition();
             balls[0].Idle(paddle.Position);
-            //ball.Idle(paddle.Position);
         }
 
         public void GameTransition(int state)
@@ -328,8 +332,70 @@ namespace BreakABrick.Screens
             {
                 Random rnd = new Random();
                 Audio.SoundBank.PlayCue(rnd.Next(1, 37).ToString());
+            }           
+        }
+
+        public bool BrickCollision(Brick brick)
+        {             
+            if (brick.Life >= 4)
+            {
+                BrickSound(true);
             }
-            
+            else
+            {
+                BrickSound(false);
+            }
+
+            if (brick.Life < 4)
+            {
+                brick.RemoveLife();
+            }
+
+            if (brick.Life == 0)
+            {
+                Rectangle brickLocation = new Rectangle(brick.Position.X + 17, brick.Position.Y, 40, 40);
+                Vector2 speed = new Vector2(0, probability.Next(3, 7));
+
+                int powerUpChance = probability.Next(100);
+                if (powerUpChance < 33)
+                {
+                    int powerUpProbability = probability.Next(100);
+
+                    if (powerUpProbability <= 30 && difficulty > 0)
+                    {
+                        powerups.Add(new ExtraPoints(extraPointsTexture, brickLocation, speed));
+                    }
+                    else if (powerUpProbability >= 31 && powerUpProbability <= 35 && difficulty > 0)
+                    {
+                        powerups.Add(new ExtraLife(extraLifeTexture, brickLocation, speed));
+                    }
+                    else if (powerUpProbability >= 36 && powerUpProbability <= 50)
+                    {
+                        powerups.Add(new PaddleUp(paddleUpTexture, brickLocation, speed));
+                    }
+                    else if (powerUpProbability >= 51 && powerUpProbability <= 65)
+                    {
+                        powerups.Add(new PaddleDown(paddleDownTexture, brickLocation, speed));
+                    }
+                    else if (powerUpProbability >= 66 && powerUpProbability <= 75)
+                    {
+                        powerups.Add(new MultiBall(multiBallTexture, brickLocation, speed));
+                    }
+                    else if (powerUpProbability >= 76 && powerUpProbability <= 85)
+                    {
+                        powerups.Add(new PaddleShoot(paddleShootTexture, brickLocation, speed));
+                    }
+                }
+
+                if (difficulty >= 1)
+                {
+                    score += 100;
+                }
+
+                return true;
+            }
+
+            return false;             
         }
         #endregion
 
@@ -371,29 +437,29 @@ namespace BreakABrick.Screens
                             }
                             else if (powerups[i] is PaddleUp)
                             {
-                                if (paddleSize == 2)
+                                if (paddleSize >= 2)
                                 {
                                     score -= 100;
+                                    paddleSize = 2;
                                 }
                                 else
                                 {
                                     paddle.Position = (powerups[i] as PaddleUp).PowerUpAction(paddle.Position);
                                     paddleSize += 1;
-                                }
-                                
+                                }                                
                             }
                             else if (powerups[i] is PaddleDown)
                             {
-                                if (paddleSize == -2)
+                                if (paddleSize <= -2)
                                 {
                                     score += 500;
+                                    paddleSize = -2;
                                 }
                                 else
                                 {
                                     paddle.Position = (powerups[i] as PaddleDown).PowerUpAction(paddle.Position);
                                     paddleSize -= 1;
-                                }
-                                
+                                }                                
                             }
                             else if (powerups[i] is MultiBall)
                             {
@@ -403,6 +469,11 @@ namespace BreakABrick.Screens
                                 {
                                     balls.Add(new Ball(ballTexture, gameField, balls[0].Position, ballMotion));
                                 }
+                            }
+                            else if (powerups[i] is PaddleShoot)
+                            {
+                                canShoot = true;
+                                shootTimer = 5;
                             }
                         }
                         
@@ -426,8 +497,10 @@ namespace BreakABrick.Screens
                         }
                     }
                     
-
                     powerups.Clear();
+                    canShoot = false;
+                    shootTimer = 0;
+                    laserShots.Clear();
                     if (balls.Count == 0)
                     {
                         balls.Add(new Ball(ballTexture, gameField));
@@ -439,7 +512,7 @@ namespace BreakABrick.Screens
                     {
                         Audio.SoundBank.PlayCue("tubeshot");
                         Random rnd = new Random();
-                        ballMotion = new Vector2(rnd.Next(-9, 10), -7);
+                        ballMotion = new Vector2(rnd.Next(-9, 10), -6);
                         balls[0].Motion = ballMotion;
                         active = 1;
                     }
@@ -454,36 +527,6 @@ namespace BreakABrick.Screens
                         }
                     }
 	            }
-                
-                //if (active == 0 || ball.Position.Y > gameField.Height)
-                //{
-                //    active = 0;
-                //    if (difficulty >= 1)
-                //    {
-                //        if (ball.Position.Y > gameField.Height)
-                //        {
-                //            paddle.RemoveLife();
-
-                //            if (paddle.Life == 0)
-                //            {
-                //                Audio.SoundBank.PlayCue("gameover");
-                //                GameTransition(1);
-                //            }
-                //        }
-                //    }
-
-                //    powerups.Clear();
-                //    ball.Idle(paddle.Position);
-
-                //    if (currMouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
-                //    {
-                //        Audio.SoundBank.PlayCue("tubeshot");
-                //        Random rnd = new Random();
-                //        ballMotion = new Vector2(rnd.Next(-4, 5), -6);
-                //        ball.Motion = ballMotion;
-                //        active = 1;
-                //    }
-                //}
 
                 if (active == 1)
                 {
@@ -493,200 +536,69 @@ namespace BreakABrick.Screens
                         active = 0;
                         GameTransition(2);
                     }
-                    foreach (var ball in balls)
+
+                    foreach (var laser in laserShots)
                     {
-                       ball.Update();
-                       ball.PaddleCollision(paddle.Position, currMouseState);
+                        laser.Update();
+
+                        for (int i = 0; i < bricks.Count; i++)
+                        {
+                            if (laser.BrickCollision(bricks[i].Position))
+                            {
+                                laser.Hit = true;
+
+                                if (BrickCollision(bricks[i]))
+                                {
+                                    bricks.RemoveAt(i);
+                                    
+                                } 
+                            }
+                        }
                     }
-                    
-                    
-                    //ball.PaddleCollision(new Rectangle((int)paddle.Position.X, (int)paddle.Position.Y, paddleTexture.Width + difficultyMod, paddleTexture.Height), currMouseState);
+
+                    for (int i = 0; i < laserShots.Count; i++)
+                    {
+                        if (laserShots[i].Hit == true)
+                        {
+                            laserShots.RemoveAt(i);
+                        }
+                    }
+
+                    if (canShoot)
+                    {
+                        shootTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+
+                        if (shootTimer <= 0.0f)
+                        {
+                            canShoot = false;
+                        }
+
+                        if (currMouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
+                        {
+                            laserShots.Add(new Laser(laserTexture, new Rectangle(paddle.Position.X, paddle.Position.Y, laserTexture.Width, laserTexture.Height), new Vector2(0, -10)));
+                            laserShots.Add(new Laser(laserTexture, new Rectangle(paddle.Position.X + paddle.Position.Width - laserTexture.Width, paddle.Position.Y, laserTexture.Width, laserTexture.Height), new Vector2(0, -10)));
+                        }
+
+                        prevMouseState = currMouseState;
+                    }
+
                     foreach (var ball in balls)
                     {
+                        ball.Update();
+                        ball.PaddleCollision(paddle.Position, currMouseState);
+
                         for (int i = 0; i < bricks.Count; i++)
                         {
                         
                             if (ball.BrickCollision(bricks[i].Position))
                             {
-                                if (bricks[i].Life >= 4)
+                                if (BrickCollision(bricks[i]))
                                 {
-                                    BrickSound(true);
-                                }
-                                else
-                                {
-                                    BrickSound(false);
-                                }
-                                                        
-                                if (bricks[i].Life < 4)
-                                {
-                                    bricks[i].RemoveLife();
-                                }
-
-                                if (bricks[i].Life == 0)
-                                {
-                                    Rectangle brickLocation = new Rectangle(bricks[i].Position.X + 17, bricks[i].Position.Y, 40, 40);
-                                    Vector2 speed = new Vector2(0, 3);
-                                    //Power up chans
-                                    int powerUpChance = probability.Next(100);
-                                    if (powerUpChance < 33)
-                                    {
-                                        int powerUpProbability = probability.Next(100);
-
-                                        if (powerUpProbability <= 40 && difficulty > 0)
-                                        {
-                                            powerups.Add(new ExtraPoints(extraPointsTexture, brickLocation, speed));                                       
-                                        }
-                                        else if (powerUpProbability >= 41 && powerUpProbability <= 45 && difficulty > 0)
-                                        {
-                                            powerups.Add(new ExtraLife(extraLifeTexture, brickLocation, speed));
-                                        }
-                                        else if (powerUpProbability >= 46 && powerUpProbability <= 55)
-                                        {
-                                            powerups.Add(new PaddleUp(paddleUpTexture, brickLocation, speed));
-                                        }
-                                        else if (powerUpProbability >= 56 && powerUpProbability <= 65)
-                                        {
-                                            powerups.Add(new PaddleDown(paddleDownTexture, brickLocation, speed));
-                                        }
-                                        else if (powerUpProbability >= 66 && powerUpProbability <= 75)
-                                        {
-                                            powerups.Add(new MultiBall(multiBallTexture, brickLocation, speed));
-                                        }
-                                        //else if (powerUpProbability >= 76 && powerUpProbability <= 80)
-                                        //{
-                                        //    powerups.Add(new PaddleShoot(paddleShootTexture, brickLocation, speed));
-                                        //}
-                                    }
-
-                                    //powerups.Add(new PowerUp(powerup, new Rectangle(bricks[i].Position.X + 17, bricks[i].Position.Y, powerup.Width, powerup.Height), new Vector2(0, 3)));
-
                                     bricks.RemoveAt(i);
-                                }
-
-                                if (difficulty >= 1)
-                                {
-                                    score += 100;
-                                }
+                                }                                 
                             }
                         }
-                    }
-                        //for (int j = 0; j < balls.Count; j++)
-                        //{
-                        //    if (balls[j].BrickCollision(bricks[i].Position))
-                        //    {
-                        //        if (bricks[i].Life >= 4)
-                        //        {
-                        //            BrickSound(true);
-                        //        }
-                        //        else
-                        //        {
-                        //            BrickSound(false);
-                        //        }
-                                                        
-                        //        if (bricks[i].Life < 4)
-                        //        {
-                        //            bricks[i].RemoveLife();
-                        //        }
-
-                        //        if (bricks[i].Life == 0)
-                        //        {
-                        //            Rectangle brickLocation = new Rectangle(bricks[i].Position.X + 17, bricks[i].Position.Y, 40, 40);
-                        //            Vector2 speed = new Vector2(0, 3);
-                        //            //Power up chans
-                        //            int powerUpChance = probability.Next(100);
-                        //            if (powerUpChance < 33)
-                        //            {
-                        //                int powerUpProbability = probability.Next(100);
-
-                        //                if (powerUpProbability <= 40 && difficulty > 0)
-                        //                {
-                        //                    powerups.Add(new ExtraPoints(extraPointsTexture, brickLocation, speed));                                       
-                        //                }
-                        //                else if (powerUpProbability >= 41 && powerUpProbability <= 45 && difficulty > 0)
-                        //                {
-                        //                    powerups.Add(new ExtraLife(extraLifeTexture, brickLocation, speed));
-                        //                }
-                        //                else if (powerUpProbability >= 46 && powerUpProbability <= 55)
-                        //                {
-                        //                    powerups.Add(new PaddleUp(paddleUpTexture, brickLocation, speed));
-                        //                }
-                        //                else if (powerUpProbability >= 56 && powerUpProbability <= 65)
-                        //                {
-                        //                    powerups.Add(new PaddleDown(paddleDownTexture, brickLocation, speed));
-                        //                }
-                        //                else if (powerUpProbability >= 66 && powerUpProbability <= 99)
-                        //                {
-                        //                    powerups.Add(new MultiBall(ballTexture, brickLocation, speed));
-                        //                }
-                        //            }
-
-                        //            //powerups.Add(new PowerUp(powerup, new Rectangle(bricks[i].Position.X + 17, bricks[i].Position.Y, powerup.Width, powerup.Height), new Vector2(0, 3)));
-
-                        //            bricks.RemoveAt(i);
-                        //        }
-
-                        //        if (difficulty >= 1)
-                        //        {
-                        //            score += 100;
-                        //        }       
-                            //}
-                        //}
-                        //if (ball.BrickCollision(bricks[i].Position))
-                        //{
-                        //    if (bricks[i].Life >= 4)
-                        //    {
-                        //        BrickSound(true);
-                        //    }
-                        //    else
-                        //    {
-                        //        BrickSound(false);
-                        //    }
-                                                        
-                        //    if (bricks[i].Life < 4)
-                        //    {
-                        //        bricks[i].RemoveLife();
-                        //    }
-
-                        //    if (bricks[i].Life == 0)
-                        //    {
-                        //        Rectangle brickLocation = new Rectangle(bricks[i].Position.X + 17, bricks[i].Position.Y, 40, 40);
-                        //        Vector2 speed = new Vector2(0, 3);
-                        //        //Power up chans
-                        //        int powerUpChance = probability.Next(100);
-                        //        if (powerUpChance < 33)
-                        //        {
-                        //            int powerUpProbability = probability.Next(100);
-
-                        //            if (powerUpProbability <= 40 && difficulty > 0)
-                        //            {
-                        //                powerups.Add(new ExtraPoints(extraPointsTexture, brickLocation, speed));                                       
-                        //            }
-                        //            else if (powerUpProbability >= 41 && powerUpProbability <= 45 && difficulty > 0)
-                        //            {
-                        //                powerups.Add(new ExtraLife(extraLifeTexture, brickLocation, speed));
-                        //            }
-                        //            else if (powerUpProbability >= 46 && powerUpProbability <= 55)
-                        //            {
-                        //                powerups.Add(new PaddleUp(paddleUpTexture, brickLocation, speed));
-                        //            }
-                        //            else if (powerUpProbability >= 56 && powerUpProbability <= 65)
-                        //            {
-                        //                powerups.Add(new PaddleDown(paddleDownTexture, brickLocation, speed));
-                        //            }
-                        //        }
-                                
-                                
-                        //        //powerups.Add(new PowerUp(powerup, new Rectangle(bricks[i].Position.X + 17, bricks[i].Position.Y, powerup.Width, powerup.Height), new Vector2(0, 3)));
-
-                        //        bricks.RemoveAt(i);
-                        //    }
-
-                        //    if (difficulty >= 1)
-                        //    {
-                        //        score += 100;
-                        //    }                          
-                        //}
-                    
+                    }                    
                 }
             }
             else if (paused || gameOver || levelComplete)
@@ -741,36 +653,7 @@ namespace BreakABrick.Screens
                         Audio.SoundBank.PlayCue("unpaus");
                         paused = false;
                     }   
-                }
-                    //for (int i = 0; i < pausButtons.Count; i++)
-                    //{
-                    //    if (pausButtons[i].ButtonUpdate())
-                    //    {
-                    //        if (i == continueGameIndex)
-                    //        {
-                    //            paused = false;
-                    //        }
-                    //        if (i == resetGameIndex)
-                    //        {
-                    //            pausButtons[mainMenuIndex].Rectangle = defaultMainMenuLocation;
-                    //            pausButtons[resetGameIndex].Rectangle = defaultResetGameLocation;
-                    //            active = 0;
-                    //            paddle.Life = 3;
-                    //            score = 0;
-                    //            NewGame();
-                    //            paused = false;
-                    //            gameOver = false;
-                    //        }
-                    //        if (i == mainMenuIndex)
-                    //        {
-                    //            screenEvent.Invoke(this, new EventArgs());
-                    //        }
-                    //        if (i == quitGameIndex)
-                    //        {
-                    //            game.Exit();
-                    //        }
-                    //    }
-                    //}             
+                }                               
             }
 
             prevMouseState = currMouseState;
@@ -796,6 +679,17 @@ namespace BreakABrick.Screens
             spriteBatch.DrawString(font, difficultyString, new Vector2(10, 80), Color.HotPink);
             spriteBatch.DrawString(font2, "ESC = Pause", new Vector2(10, 680), Color.HotPink);
 
+            if (canShoot)
+            {
+                spriteBatch.Draw(paddleShootTexture, new Vector2(1140, 600), Color.White);
+                spriteBatch.DrawString(font, Math.Round(shootTimer, 2).ToString(), new Vector2(1190, 605), Color.HotPink);
+            }
+
+            foreach (var laser in laserShots)
+            {
+                laser.Draw(spriteBatch);
+            }
+
             paddle.Draw(spriteBatch);
 
             for (int i = 0; i < bricks.Count; i++)
@@ -817,21 +711,15 @@ namespace BreakABrick.Screens
                 }
             }
 
-            //foreach (Brick item in bricks)
-            //{
-            //    item.Draw(spriteBatch);
-            //}
             foreach (var ball in balls)
             {
                 ball.Draw(spriteBatch);
             }
-            //ball.Draw(spriteBatch);
 
             foreach (var powerup in powerups)
             {
                 powerup.Draw(spriteBatch);
             }
-            
 
             if (paused || gameOver || levelComplete)
             {
@@ -874,6 +762,7 @@ namespace BreakABrick.Screens
 
             base.Draw(spriteBatch);
         }
+
         #endregion
     }
 }

@@ -84,6 +84,7 @@
     <Compile Include="GameComponents\PowerUp.cs" />
     <Compile Include="GameComponents\PowerUps\ExtraLife.cs" />
     <Compile Include="GameComponents\PowerUps\ExtraPoints.cs" />
+    <Compile Include="GameComponents\PowerUps\Laser.cs" />
     <Compile Include="GameComponents\PowerUps\MultiBall.cs" />
     <Compile Include="GameComponents\PowerUps\PaddleDown.cs" />
     <Compile Include="GameComponents\PowerUps\PaddleShoot.cs" />
