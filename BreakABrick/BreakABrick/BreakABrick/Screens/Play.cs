@@ -33,7 +33,7 @@ namespace BreakABrick.Screens
         Vector2 ballMotion;
 
         //Aktuell bana, lista för brickor och grafik
-        int currentLevel = 3;
+        int currentLevel = 1;
         List<Brick> bricks = new List<Brick>();
         Texture2D brickTexture;
         int indestructibleBricks;
@@ -101,6 +101,8 @@ namespace BreakABrick.Screens
 
         //poäng
         int score;
+        int bonusPoints;
+        int totalScore;
 
         //powerups
         int paddleSize;
@@ -237,30 +239,30 @@ namespace BreakABrick.Screens
                         nextBrickX++;
                         break;
                     case '1':
-                        if (!(nextBrickX >= 14))
+                        if (!(nextBrickX >= 12))
                         {
-                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 150, (nextBrickY * 25) + 50, 70, brickTexture.Height), 1));
+                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 220, (nextBrickY * 25) + 50, 70, brickTexture.Height), 1));
                             nextBrickX++;
                         }                        
                         break;
                     case '2':
-                        if (!(nextBrickX >= 14))
+                        if (!(nextBrickX >= 12))
                         {
-                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 150, (nextBrickY * 25) + 50, 70, brickTexture.Height), 2));
+                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 220, (nextBrickY * 25) + 50, 70, brickTexture.Height), 2));
                             nextBrickX++;
                         }
                         break;
                     case '3':
-                        if (!(nextBrickX >= 14))
+                        if (!(nextBrickX >= 12))
                         {
-                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 150, (nextBrickY * 25) + 50, 70, brickTexture.Height), 3));
+                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 220, (nextBrickY * 25) + 50, 70, brickTexture.Height), 3));
                             nextBrickX++;
                         }
                         break;
                     case '4':
-                        if (!(nextBrickX >= 14))
+                        if (!(nextBrickX >= 12))
                         {
-                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 150, (nextBrickY * 25) + 50, 70, brickTexture.Height), 4));
+                            bricks.Add(new Brick(brickTexture, new Rectangle((nextBrickX * 70) + 220, (nextBrickY * 25) + 50, 70, brickTexture.Height), 4));
                             nextBrickX++;
                             indestructibleBricks ++;
                         }
@@ -357,7 +359,7 @@ namespace BreakABrick.Screens
                 Vector2 speed = new Vector2(0, probability.Next(3, 7));
 
                 int powerUpChance = probability.Next(100);
-                if (powerUpChance < 33)
+                if (powerUpChance < 10)
                 {
                     int powerUpProbability = probability.Next(100);
 
@@ -411,7 +413,7 @@ namespace BreakABrick.Screens
 
                 if (prevKeyboardState.IsKeyUp(Keys.Escape) && currKeyboardState.IsKeyDown(Keys.Escape))
                 {
-                    Audio.SoundBank.PlayCue("paus");
+                    Audio.SoundBank.PlayCue("blip");
                     paused = true;
                 }
 
@@ -425,18 +427,23 @@ namespace BreakABrick.Screens
                     {
                         if (powerups[i].Position.Intersects(paddle.Position))
                         {
-                            Audio.SoundBank.PlayCue("paus");                           
 
                             if (powerups[i] is ExtraPoints)
                             {
+                                Audio.SoundBank.PlayCue("powerup");
+
                                 score = (powerups[i] as ExtraPoints).PowerUpAction(score);
                             }
                             else if (powerups[i] is ExtraLife)
                             {
+                                Audio.SoundBank.PlayCue("powerup");
+
                                 paddle.Life = (powerups[i] as ExtraLife).PowerUpAction(paddle.Life);
                             }
                             else if (powerups[i] is PaddleUp)
                             {
+                                Audio.SoundBank.PlayCue("paus"); 
+
                                 if (paddleSize >= 2)
                                 {
                                     score -= 100;
@@ -450,6 +457,8 @@ namespace BreakABrick.Screens
                             }
                             else if (powerups[i] is PaddleDown)
                             {
+                                Audio.SoundBank.PlayCue("unpaus");  
+
                                 if (paddleSize <= -2)
                                 {
                                     score += 500;
@@ -463,6 +472,8 @@ namespace BreakABrick.Screens
                             }
                             else if (powerups[i] is MultiBall)
                             {
+                                Audio.SoundBank.PlayCue("pop");  
+
                                 int newBalls = 3 - difficulty;
 
                                 for (int j = 0; j < newBalls; j++)
@@ -472,8 +483,9 @@ namespace BreakABrick.Screens
                             }
                             else if (powerups[i] is PaddleShoot)
                             {
+                                Audio.SoundBank.PlayCue("charge");  
                                 canShoot = true;
-                                shootTimer = 5;
+                                shootTimer = 2.5;
                             }
                         }
                         
@@ -512,7 +524,7 @@ namespace BreakABrick.Screens
                     {
                         Audio.SoundBank.PlayCue("tubeshot");
                         Random rnd = new Random();
-                        ballMotion = new Vector2(rnd.Next(-9, 10), -6);
+                        ballMotion = new Vector2(rnd.Next(-9, 10), -7);
                         balls[0].Motion = ballMotion;
                         active = 1;
                     }
@@ -533,6 +545,8 @@ namespace BreakABrick.Screens
                     if (bricks.Count - indestructibleBricks == 0)
                     {
                         Audio.SoundBank.PlayCue("levelcomplete");
+                        bonusPoints = paddle.Life * 1000;
+                        totalScore = score + bonusPoints;
                         active = 0;
                         GameTransition(2);
                     }
@@ -546,11 +560,11 @@ namespace BreakABrick.Screens
                             if (laser.BrickCollision(bricks[i].Position))
                             {
                                 laser.Hit = true;
+                                Audio.SoundBank.PlayCue("buttonhit");  
 
                                 if (BrickCollision(bricks[i]))
                                 {
-                                    bricks.RemoveAt(i);
-                                    
+                                    bricks.RemoveAt(i);                                    
                                 } 
                             }
                         }
@@ -575,6 +589,7 @@ namespace BreakABrick.Screens
 
                         if (currMouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
                         {
+                            Audio.SoundBank.PlayCue("pulse");  
                             laserShots.Add(new Laser(laserTexture, new Rectangle(paddle.Position.X, paddle.Position.Y, laserTexture.Width, laserTexture.Height), new Vector2(0, -10)));
                             laserShots.Add(new Laser(laserTexture, new Rectangle(paddle.Position.X + paddle.Position.Width - laserTexture.Width, paddle.Position.Y, laserTexture.Width, laserTexture.Height), new Vector2(0, -10)));
                         }
@@ -616,7 +631,7 @@ namespace BreakABrick.Screens
                     {
                         pausButtons[mainMenuIndex].Rectangle = defaultMainMenuLocation;
                         pausButtons[resetGameIndex].Rectangle = defaultResetGameLocation;
-
+                        score = totalScore;
                         currentLevel += 1;
                         NewGame();
                         levelComplete = false;
@@ -650,7 +665,6 @@ namespace BreakABrick.Screens
                     }
                     if (prevKeyboardState.IsKeyUp(Keys.Escape) && currKeyboardState.IsKeyDown(Keys.Escape))
                     {
-                        Audio.SoundBank.PlayCue("unpaus");
                         paused = false;
                     }   
                 }                               
@@ -734,8 +748,16 @@ namespace BreakABrick.Screens
 
                     if (difficulty >= 1)
                     {
-                        spriteBatch.DrawString(font, score.ToString(), new Vector2(720, 260), Color.HotPink);
-                        spriteBatch.DrawString(font, "Your Score", new Vector2(450, 260), Color.HotPink);
+                        spriteBatch.DrawString(font2, score.ToString(), new Vector2(720, 260), Color.HotPink);
+                        spriteBatch.DrawString(font2, "Your Score", new Vector2(450, 260), Color.HotPink);
+
+                        if (levelComplete)
+                        {
+                            spriteBatch.DrawString(font2, "Life bonus points", new Vector2(450, 310), Color.HotPink);
+                            spriteBatch.DrawString(font2, bonusPoints.ToString(), new Vector2(720, 310), Color.HotPink);
+                            spriteBatch.DrawString(font2, "Total Score", new Vector2(450, 360), Color.HotPink);
+                            spriteBatch.DrawString(font2, totalScore.ToString(), new Vector2(720, 360), Color.HotPink);
+                        }
                     }
                     
                     pausButtons[mainMenuIndex].Draw(spriteBatch);

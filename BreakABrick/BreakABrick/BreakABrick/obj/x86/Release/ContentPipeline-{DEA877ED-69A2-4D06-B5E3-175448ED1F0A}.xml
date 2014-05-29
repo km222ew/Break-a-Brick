@@ -496,6 +496,15 @@
       <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\laser3.xnb</Output>
       <Time>2014-05-23T00:56:41.0311733+02:00</Time>
     </Item>
+    <Item>
+      <Source>Images\Menu\Background\howtoplaybox.png</Source>
+      <Name>Images\Menu\Background\howtoplaybox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\Background\howtoplaybox.xnb</Output>
+      <Time>2014-05-25T22:14:17.3468548+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{DEA877ED-69A2-4D06-B5E3-175448ED1F0A}</ContentProjectGUID>

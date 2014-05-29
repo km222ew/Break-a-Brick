@@ -11,10 +11,12 @@ namespace BreakABrick.ApplicationComponents
         private static AudioEngine audioEngine;
         private static WaveBank waveBank;
         private static SoundBank soundBank;
-        private static AudioCategory audioCategory;
+        private static AudioCategory music;
+        private static AudioCategory soundEffects;
 
         //Volym, 1 = orginal, 0.5 = halv etc
-        private static float audioVolume = 1.0f;
+        private static float musicVolume = 1.0f;
+        private static float soundEffectsVolume = 1.0f;
 
         //Tillgång till alla ljud
         public static SoundBank SoundBank
@@ -28,14 +30,25 @@ namespace BreakABrick.ApplicationComponents
             get { return audioEngine; }
         }
 
-        //Ändrar volymen 
-        public static float AudioVolume
+        //Ändrar volymen på musiken
+        public static float MusicVolume
         {
-            get { return AudioVolume; }
+            get { return musicVolume; }
             set 
-            { 
-                audioVolume = value;
-                audioCategory.SetVolume(audioVolume);
+            {
+                musicVolume = value;
+                music.SetVolume(musicVolume);
+            }
+        }
+
+        //Ändrar volymen på ljudeffekter
+        public static float SoundEffectsVolume
+        {
+            get { return musicVolume; }
+            set
+            {
+                soundEffectsVolume = value;
+                soundEffects.SetVolume(soundEffectsVolume);
             }
         }
 
@@ -47,7 +60,8 @@ namespace BreakABrick.ApplicationComponents
             soundBank = new SoundBank(audioEngine, "Content/Audio/Sound Bank.xsb");
 
             //Kategori på ljud i xact-projektet
-            audioCategory = audioEngine.GetCategory("Default");
+            music = audioEngine.GetCategory("Music");
+            soundEffects = audioEngine.GetCategory("Sound Effects");
         }
         
 

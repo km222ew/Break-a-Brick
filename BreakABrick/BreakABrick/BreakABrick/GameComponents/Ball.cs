@@ -115,7 +115,10 @@ namespace BreakABrick.GameComponents
                         {
                             if (paddlePreCol.X - paddle.X > 40)
                             {
-                                motion.X = (6 + randSpeed.Next(-3, 4)) * -1;
+                                motion.X = ((paddlePreCol.X - paddle.X) / 10) * -1;
+
+                                //motion.X = (6 + randSpeed.Next(-3, 4)) * -1;
+
                                 motion.Y *= -1;
                             }
                             else
@@ -129,7 +132,10 @@ namespace BreakABrick.GameComponents
                         {
                             if (paddle.X - paddlePreCol.X > 6)
                             {
-                                motion.X = (6 + randSpeed.Next(-3, 4));
+                                motion.X = (paddle.X - paddlePreCol.X) / 10;
+
+                                //motion.X = (6 + randSpeed.Next(-3, 4));
+
                                 motion.Y *= -1;
                             }
                             else
@@ -142,7 +148,7 @@ namespace BreakABrick.GameComponents
                         //.. och plattan är på samma ställe
                         else
                         {
-                            motion.X = motion.X * 0.30f;
+                            //motion.X = motion.X * 0.30f;
                             motion.Y *= -1;
                         }
                     }
@@ -154,7 +160,10 @@ namespace BreakABrick.GameComponents
                         {
                             if (paddlePreCol.X - paddle.X > 6)
                             {
-                                motion.X = (6 + randSpeed.Next(-3, 4)) * -1;
+                                motion.X = ((paddlePreCol.X - paddle.X) / 10) * -1;
+
+                                //motion.X = (6 + randSpeed.Next(-3, 4)) * -1;
+
                                 motion.Y *= -1;
                             }
                             else
@@ -168,7 +177,10 @@ namespace BreakABrick.GameComponents
                         {
                             if (paddle.X - paddlePreCol.X > 40)
                             {
-                                motion.X = (6 + randSpeed.Next(-3, 4));
+                                motion.X = (paddle.X - paddlePreCol.X) / 10;
+
+                                //motion.X = (6 + randSpeed.Next(-3, 4));
+
                                 motion.Y *= -1;
                             }
                             else
@@ -180,7 +192,7 @@ namespace BreakABrick.GameComponents
                         //.. och plattan är på samma ställe
                         else
                         {
-                            motion.X = motion.X * 0.30f;
+                            //motion.X = motion.X * 0.30f;
                             motion.Y *= -1;
                         }
                     }
@@ -460,25 +472,33 @@ namespace BreakABrick.GameComponents
             if (brick.Contains(collisionPoints[0]))
             {
                 position.Y = position.Y + 15;
-                motion.Y = motion.Y * -1;                
+                motion.Y = motion.Y * -1;
+
+                //motion.X = motion.X * 0.9f; 
                 return true;
             }
             else if (brick.Contains(collisionPoints[1]))
             {
                 position.X = position.X + 15;
-                motion.X = motion.X * -1;                
+                motion.X = motion.X * -1;
+
+                //motion.X = motion.X * 0.9f * -1; 
                 return true;
             }
             else if (brick.Contains(collisionPoints[2]))
             {
                 position.Y = position.Y - 15;
-                motion.Y = motion.Y * -1;                
+                motion.Y = motion.Y * -1;
+
+                //motion.X = motion.X * 0.9f; 
                 return true;
             }
             else if (brick.Contains(collisionPoints[3]))
             {
                 position.X = position.X - 15;
-                motion.X = motion.X * -1;                
+                motion.X = motion.X * -1;
+
+                //motion.X = motion.X * 0.9f * -1; 
                 return true;
             }
 

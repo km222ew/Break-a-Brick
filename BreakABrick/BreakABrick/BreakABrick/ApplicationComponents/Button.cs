@@ -27,6 +27,7 @@ namespace BreakABrick.ApplicationComponents
         MouseState mouseState;
 
         bool currMouseState, prevMouseState = false;
+        bool mouseIsIntersecting;
 
         int mousePosX, mousePosY;
 
@@ -71,6 +72,12 @@ namespace BreakABrick.ApplicationComponents
 
             if (new Rectangle(mousePosX, mousePosY, 1, 1).Intersects(rectangle))
             {
+                if (!mouseIsIntersecting)
+                {
+                    Audio.SoundBank.PlayCue("tap");
+                    mouseIsIntersecting = true;
+                }
+
                 if (currMouseState)
                 {
                     state = MenuButtonState.MouseButtonDown;
@@ -90,13 +97,15 @@ namespace BreakABrick.ApplicationComponents
                 else
                 {
                     state = MenuButtonState.MouseHover;
-                    color = Color.HotPink;
+                    color = Color.HotPink;                    
+
                     return false;
                 }
             }
             else
             {
                 state = MenuButtonState.MouseButtonUp;
+                mouseIsIntersecting = false;
                 color = Color.White;
             }
 

@@ -16,8 +16,8 @@ Global Settings
     Header File = sounds.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 30371097;
-    Last Modified High = 4286825898;
+    Last Modified Low = 4286825898;
+    Last Modified High = 30371097;
 
     Category
     {
@@ -75,6 +75,32 @@ Global Settings
         Name = Music;
         Public = 1;
         Background Music = 1;
+        Volume = 0;
+
+        Category Entry
+        {
+            Name = Global;
+        }
+
+        Instance Limit
+        {
+            Max Instances = 255;
+            Behavior = 0;
+
+            Crossfade
+            {
+                Fade In = 0;
+                Fade Out = 0;
+                Crossfade Type = 0;
+            }
+        }
+    }
+
+    Category
+    {
+        Name = Sound Effects;
+        Public = 1;
+        Background Music = 0;
         Volume = 0;
 
         Category Entry
@@ -225,8 +251,14 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Bank Last Revised Low = 1677254743;
-    Bank Last Revised High = 30371147;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 0;
+    PC Bank Last Modified High = 0;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+    Bank Last Revised Low = 4044939246;
+    Bank Last Revised High = 30374556;
 
     Wave
     {
@@ -1469,6 +1501,167 @@ Wave Bank
             Last Modified High = 30371147;
         }
     }
+
+    Wave
+    {
+        Name = PowerUp-Mark_E_B-8070_hifi;
+        File = PowerUp-Mark_E_B-8070_hifi.wav;
+        Build Settings Last Modified Low = 724784616;
+        Build Settings Last Modified High = 30373940;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 40896;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3904301056;
+            Last Modified High = 30373939;
+        }
+    }
+
+    Wave
+    {
+        Name = PulseSho-Mark_E_B-8071_hifi;
+        File = PulseSho-Mark_E_B-8071_hifi.wav;
+        Build Settings Last Modified Low = 724784616;
+        Build Settings Last Modified High = 30373940;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 32484;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3904301056;
+            Last Modified High = 30373939;
+        }
+    }
+
+    Wave
+    {
+        Name = ZipUp-Mark_E_B-8079_hifi;
+        File = ZipUp-Mark_E_B-8079_hifi.wav;
+        Build Settings Last Modified Low = 724794616;
+        Build Settings Last Modified High = 30373940;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 32484;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3904301056;
+            Last Modified High = 30373939;
+        }
+    }
+
+    Wave
+    {
+        Name = Techno_B-Urbanlex-7847_hifi;
+        File = Techno_B-Urbanlex-7847_hifi.wav;
+        Build Settings Last Modified Low = 724794616;
+        Build Settings Last Modified High = 30373940;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 18560;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3904301056;
+            Last Modified High = 30373939;
+        }
+    }
+
+    Wave
+    {
+        Name = Tap_on_M-Sapphire-8662_hifi;
+        File = Tap_on_M-Sapphire-8662_hifi.wav;
+        Build Settings Last Modified Low = 3900500984;
+        Build Settings Last Modified High = 30374556;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 28544;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2849479424;
+            Last Modified High = 30374556;
+        }
+    }
+
+    Wave
+    {
+        Name = Clunk-Public_D-287_hifi;
+        File = Clunk-Public_D-287_hifi.wav;
+        Build Settings Last Modified Low = 3900500984;
+        Build Settings Last Modified High = 30374556;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 22050;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 20830;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2109479424;
+            Last Modified High = 30374556;
+        }
+    }
+
+    Wave
+    {
+        Name = Clunch-Intermed-533_hifi;
+        File = Clunch-Intermed-533_hifi.wav;
+        Build Settings Last Modified Low = 3900500984;
+        Build Settings Last Modified High = 30374556;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 12766;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2849479424;
+            Last Modified High = 30374556;
+        }
+    }
 }
 
 Sound Bank
@@ -1478,6 +1671,8 @@ Sound Bank
     Windows File = Win\Sound Bank.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
+    Header Last Modified High = 0;
+    Header Last Modified Low = 0;
 
     Sound
     {
@@ -1488,7 +1683,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1535,7 +1730,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1582,7 +1777,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1629,7 +1824,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1676,7 +1871,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1723,7 +1918,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1770,7 +1965,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1817,7 +2012,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1864,7 +2059,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1911,7 +2106,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -1958,7 +2153,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2005,7 +2200,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2052,7 +2247,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2099,7 +2294,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2146,7 +2341,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2193,7 +2388,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2240,7 +2435,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2287,7 +2482,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2334,7 +2529,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2381,7 +2576,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2428,7 +2623,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2475,7 +2670,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2522,7 +2717,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2569,7 +2764,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2616,7 +2811,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2663,7 +2858,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2710,7 +2905,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2757,7 +2952,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2804,7 +2999,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2851,7 +3046,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2898,7 +3093,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2945,7 +3140,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -2992,7 +3187,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3039,7 +3234,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3086,7 +3281,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3133,7 +3328,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3180,7 +3375,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3227,7 +3422,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3274,7 +3469,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3321,7 +3516,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3368,7 +3563,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3415,7 +3610,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3462,7 +3657,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3509,7 +3704,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3556,7 +3751,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3603,7 +3798,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3650,7 +3845,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3697,7 +3892,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3744,7 +3939,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3791,7 +3986,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3838,7 +4033,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3885,7 +4080,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3932,7 +4127,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -3979,7 +4174,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4026,7 +4221,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4074,7 +4269,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4121,7 +4316,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4168,7 +4363,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4215,7 +4410,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4262,7 +4457,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4309,7 +4504,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Sound Effects;
         }
 
         Track
@@ -4356,7 +4551,7 @@ Sound Bank
 
         Category Entry
         {
-            Name = Default;
+            Name = Music;
         }
 
         Track
@@ -4388,6 +4583,335 @@ Sound Bank
                     Bank Index = 0;
                     Entry Name = The_Area-Tarantul-9398_hifi1;
                     Entry Index = 53;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = PowerUp-Mark_E_B-8070_hifi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = PowerUp-Mark_E_B-8070_hifi;
+                    Entry Index = 54;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = PulseSho-Mark_E_B-8071_hifi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = PulseSho-Mark_E_B-8071_hifi;
+                    Entry Index = 55;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = ZipUp-Mark_E_B-8079_hifi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = ZipUp-Mark_E_B-8079_hifi;
+                    Entry Index = 56;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = Techno_B-Urbanlex-7847_hifi;
+        Volume = -1800;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Techno_B-Urbanlex-7847_hifi;
+                    Entry Index = 57;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = Tap_on_M-Sapphire-8662_hifi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Tap_on_M-Sapphire-8662_hifi;
+                    Entry Index = 58;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = Clunk-Public_D-287_hifi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Clunk-Public_D-287_hifi;
+                    Entry Index = 59;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = Clunch-Intermed-533_hifi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Sound Effects;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Clunch-Intermed-533_hifi;
+                    Entry Index = 60;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -5361,7 +5885,7 @@ Sound Bank
 
     Cue
     {
-        Name = Pop-J_Fairba-8421_hifi;
+        Name = pop;
 
         Variation
         {
@@ -5534,6 +6058,146 @@ Sound Bank
         {
             Name = The_Area-Tarantul-9398_hifi1;
             Index = 61;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = powerup;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = PowerUp-Mark_E_B-8070_hifi;
+            Index = 62;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = pulse;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = PulseSho-Mark_E_B-8071_hifi;
+            Index = 63;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = charge;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = ZipUp-Mark_E_B-8079_hifi;
+            Index = 64;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = shot;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Techno_B-Urbanlex-7847_hifi;
+            Index = 65;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = tap;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Tap_on_M-Sapphire-8662_hifi;
+            Index = 66;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = clunk;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Clunk-Public_D-287_hifi;
+            Index = 67;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = clunch;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Clunch-Intermed-533_hifi;
+            Index = 68;
             Weight Min = 0;
             Weight Max = 255;
         }

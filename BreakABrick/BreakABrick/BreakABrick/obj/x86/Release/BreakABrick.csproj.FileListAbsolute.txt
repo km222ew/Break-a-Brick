@@ -67,3 +67,4 @@ C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABr
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\multiball2.xnb
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\paddleshoot2.xnb
 C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Game\Powerups\laser3.xnb
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrick\bin\x86\Release\Content\Images\Menu\Background\howtoplaybox.xnb

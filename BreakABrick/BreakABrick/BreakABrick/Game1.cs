@@ -34,6 +34,8 @@ namespace BreakABrick
         //Aktuell skärm
         Screen currentScreen;
 
+      
+        
         
 
         public Game1()
@@ -51,6 +53,8 @@ namespace BreakABrick
                 0,
                 graphics.PreferredBackBufferWidth,
                 graphics.PreferredBackBufferHeight);
+
+
         }
 
         /// <summary>
