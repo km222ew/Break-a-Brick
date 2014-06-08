@@ -1,0 +1,2 @@
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\BreakABrick\BreakABrick\BreakABrickContent\obj\x86\Release\BreakABrickContent.contentprojResolveAssemblyReference.cache
+C:\Users\Vanilla\Documents\GitHub\Break-a-Brick\Källkod\BreakABrick\BreakABrick\BreakABrickContent\obj\x86\Release\BreakABrickContent.contentprojResolveAssemblyReference.cache
